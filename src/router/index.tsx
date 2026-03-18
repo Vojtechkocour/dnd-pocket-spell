@@ -9,4 +9,4 @@ export const router = createBrowserRouter([
   { path: '/dashboard', element: <CharacterDashboard /> },
   { path: '/library', element: <SpellLibrary /> },
   { path: '/spells/:id', element: <SpellDetail /> },
-])
+], { basename: import.meta.env.BASE_URL })
