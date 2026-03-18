@@ -4,6 +4,7 @@ import { SPELL_SCHOOL_LABELS, SPELL_SCHOOL_COLORS, CHARACTER_CLASS_LABELS } from
 import type { CharacterClass } from '../types'
 import { Badge } from '../components/ui/Badge'
 import { Button } from '../components/ui/Button'
+import { getMaxCantrips, getMaxPreparedLeveledSpells } from '../utils/preparedSpellLimit'
 
 export function SpellDetail() {
   const { id } = useParams<{ id: string }>()
@@ -15,6 +16,19 @@ export function SpellDetail() {
 
   const spell = spells.find((s) => s.id === id)
   const isPrepared = character?.preparedSpellIds.includes(id ?? '') ?? false
+
+  const isAtLimit = (() => {
+    if (!character || !spell || isPrepared) return false
+    if (spell.level === 0) {
+      const max = getMaxCantrips(character)
+      const current = character.preparedSpellIds.filter((sid) => spells.find((s) => s.id === sid)?.level === 0).length
+      return max !== null && current >= max
+    } else {
+      const max = getMaxPreparedLeveledSpells(character)
+      const current = character.preparedSpellIds.filter((sid) => { const s = spells.find((sp) => sp.id === sid); return s && s.level > 0 }).length
+      return max !== null && current >= max
+    }
+  })()
 
   function togglePrepare() {
     if (!character || !id) return
@@ -56,9 +70,11 @@ export function SpellDetail() {
           <Button
             size="sm"
             variant={isPrepared ? 'danger' : 'secondary'}
-            onClick={togglePrepare}
+            onClick={isAtLimit ? undefined : togglePrepare}
+            disabled={isAtLimit}
+            title={isAtLimit ? 'Spell limit reached' : undefined}
           >
-            {isPrepared ? 'Remove' : '+ Add'}
+            {isPrepared ? 'Remove' : isAtLimit ? '— at limit' : '+ Add'}
           </Button>
         )}
       </header>
