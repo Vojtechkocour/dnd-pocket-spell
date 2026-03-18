@@ -33,6 +33,8 @@ export function CharacterDashboard() {
 
   const cantrips = preparedSpells.filter((s) => s.level === 0)
   const leveledSpells = preparedSpells.filter((s) => s.level > 0)
+  void cantrips
+  void leveledSpells
 
   return (
     <div className="min-h-screen bg-arcane-950 text-parchment-100">

@@ -10,7 +10,7 @@ import type {
 } from '../types'
 import { DEFAULT_FILTERS } from '../types'
 import { getSlotsForCharacter, getPactSlotsForWarlock, isWarlock } from '../utils/spellSlotTable'
-import { exportCharacters, parseImportFile } from '../utils/importExport'
+import { exportCharacters } from '../utils/importExport'
 
 // Simple uuid without dependency on 'uuid' package
 function generateId(): string {
