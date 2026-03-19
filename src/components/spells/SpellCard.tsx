@@ -18,12 +18,7 @@ export function SpellCard({ spell, isPrepared, isAtLimit = false, isUnavailable 
   const blocked = !isPrepared && (isUnavailable || isAtLimit)
 
   return (
-    <div className={cn(
-      'border rounded-lg p-4 flex flex-col gap-3 transition-colors',
-      isUnavailable && !isPrepared
-        ? 'bg-arcane-950 border-arcane-800/40 opacity-50'
-        : 'bg-arcane-900 border-arcane-800 hover:border-gold-600/50'
-    )}>
+    <div className="bg-arcane-900 border border-arcane-800 hover:border-gold-600/50 rounded-lg p-4 flex flex-col gap-3 transition-colors">
       <button
         onClick={() => navigate(`/spells/${spell.id}`)}
         className="text-left"
@@ -31,9 +26,6 @@ export function SpellCard({ spell, isPrepared, isAtLimit = false, isUnavailable 
         <div className="flex items-start justify-between gap-2">
           <h3 className="font-display text-parchment-100 leading-tight">{spell.name}</h3>
           <div className="flex items-center gap-1 shrink-0">
-            {isUnavailable && !isPrepared && (
-              <span className="text-xs text-parchment-200/30">🔒</span>
-            )}
             {spell.concentration && (
               <span className="text-xs bg-yellow-900/60 text-yellow-400 px-1.5 py-0.5 rounded">C</span>
             )}
