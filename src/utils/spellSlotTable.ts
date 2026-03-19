@@ -132,6 +132,10 @@ export function getSlotsForCharacter(
     case 'warlock':
       // Warlock uses pact slots — return empty standard slots
       return rowToSpellSlots([0, 0, 0, 0, 0, 0, 0, 0, 0])
+    case 'barbarian':
+    case 'fighter':
+    case 'rogue':
+      return rowToSpellSlots([0, 0, 0, 0, 0, 0, 0, 0, 0])
   }
 }
 

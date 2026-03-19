@@ -59,22 +59,28 @@ export interface PactSlots {
 // ─── Character ────────────────────────────────────────────────────────────────
 
 export type CharacterClass =
+  | 'barbarian'
   | 'bard'
   | 'cleric'
   | 'druid'
+  | 'fighter'
   | 'paladin'
   | 'ranger'
+  | 'rogue'
   | 'sorcerer'
   | 'warlock'
   | 'wizard'
   | 'artificer'
 
 export const CHARACTER_CLASS_LABELS: Record<CharacterClass, string> = {
+  barbarian: 'Barbarian',
   bard: 'Bard',
   cleric: 'Cleric',
   druid: 'Druid',
+  fighter: 'Fighter',
   paladin: 'Paladin',
   ranger: 'Ranger',
+  rogue: 'Rogue',
   sorcerer: 'Sorcerer',
   warlock: 'Warlock',
   wizard: 'Wizard',

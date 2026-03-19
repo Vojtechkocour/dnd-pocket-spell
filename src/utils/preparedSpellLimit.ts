@@ -15,6 +15,10 @@ const MAX_SPELL_LEVEL: Record<CharacterClass, number[]> = {
   warlock:  [1,2,2,2,3,3,4,4,5,5,5,5,5,5,5,5,5,5,5,5],
   // Artificer — half caster, max 5th level
   artificer:[1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5],
+  // Non-casters — no spell access
+  barbarian:Array(20).fill(0),
+  fighter:  Array(20).fill(0),
+  rogue:    Array(20).fill(0),
 }
 
 /** Highest spell level the character can access (cantrips = level 0, always allowed). */
