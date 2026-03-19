@@ -1,5 +1,28 @@
 import type { Character, CharacterClass } from '../types'
 
+// Max spell level accessible by class and character level (index = level - 1)
+const MAX_SPELL_LEVEL: Record<CharacterClass, number[]> = {
+  // Full casters
+  bard:     [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,9,9],
+  cleric:   [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,9,9],
+  druid:    [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,9,9],
+  sorcerer: [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,9,9],
+  wizard:   [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,9,9],
+  // Half casters — max 5th level
+  paladin:  [1,1,2,2,3,3,4,4,5,5,5,5,5,5,5,5,5,5,5,5],
+  ranger:   [1,1,2,2,3,3,4,4,5,5,5,5,5,5,5,5,5,5,5,5],
+  // Pact magic — unlocks one tier earlier than half casters
+  warlock:  [1,2,2,2,3,3,4,4,5,5,5,5,5,5,5,5,5,5,5,5],
+  // Artificer — half caster, max 5th level
+  artificer:[1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5],
+}
+
+/** Highest spell level the character can access (cantrips = level 0, always allowed). */
+export function getMaxSpellLevel(character: Character): number {
+  const table = MAX_SPELL_LEVEL[character.class]
+  return table[Math.min(character.level, 20) - 1]
+}
+
 // Classes where spells are "prepared" — limit = spellcasting modifier + level formula
 const PREPARED_CLASSES = new Set<CharacterClass>(['cleric', 'druid', 'paladin', 'wizard', 'artificer'])
 

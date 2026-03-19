@@ -8,15 +8,22 @@ interface SpellCardProps {
   spell: Spell
   isPrepared: boolean
   isAtLimit?: boolean
+  isUnavailable?: boolean
   onTogglePrepare: () => void
 }
 
-export function SpellCard({ spell, isPrepared, isAtLimit = false, onTogglePrepare }: SpellCardProps) {
+export function SpellCard({ spell, isPrepared, isAtLimit = false, isUnavailable = false, onTogglePrepare }: SpellCardProps) {
   const navigate = useNavigate()
   const levelLabel = spell.level === 0 ? 'Cantrip' : `Lv ${spell.level}`
+  const blocked = !isPrepared && (isUnavailable || isAtLimit)
 
   return (
-    <div className="bg-arcane-900 border border-arcane-800 hover:border-gold-600/50 rounded-lg p-4 flex flex-col gap-3 transition-colors">
+    <div className={cn(
+      'border rounded-lg p-4 flex flex-col gap-3 transition-colors',
+      isUnavailable && !isPrepared
+        ? 'bg-arcane-950 border-arcane-800/40 opacity-50'
+        : 'bg-arcane-900 border-arcane-800 hover:border-gold-600/50'
+    )}>
       <button
         onClick={() => navigate(`/spells/${spell.id}`)}
         className="text-left"
@@ -24,6 +31,9 @@ export function SpellCard({ spell, isPrepared, isAtLimit = false, onTogglePrepar
         <div className="flex items-start justify-between gap-2">
           <h3 className="font-display text-parchment-100 leading-tight">{spell.name}</h3>
           <div className="flex items-center gap-1 shrink-0">
+            {isUnavailable && !isPrepared && (
+              <span className="text-xs text-parchment-200/30">🔒</span>
+            )}
             {spell.concentration && (
               <span className="text-xs bg-yellow-900/60 text-yellow-400 px-1.5 py-0.5 rounded">C</span>
             )}
@@ -44,19 +54,27 @@ export function SpellCard({ spell, isPrepared, isAtLimit = false, onTogglePrepar
       </button>
 
       <button
-        onClick={!isPrepared && isAtLimit ? undefined : onTogglePrepare}
-        disabled={!isPrepared && isAtLimit}
-        title={!isPrepared && isAtLimit ? 'Spell limit reached' : undefined}
+        onClick={blocked ? undefined : onTogglePrepare}
+        disabled={blocked}
+        title={
+          isUnavailable && !isPrepared
+            ? `Requires higher character level`
+            : isAtLimit && !isPrepared
+              ? 'Spell limit reached'
+              : undefined
+        }
         className={cn(
           'w-full text-sm py-1.5 rounded border transition-colors',
           isPrepared
             ? 'bg-gold-500/20 border-gold-600 text-gold-400 hover:bg-crimson-900/40 hover:border-crimson-600 hover:text-crimson-400'
-            : isAtLimit
-              ? 'bg-transparent border-arcane-800/40 text-parchment-200/20 cursor-not-allowed'
-              : 'bg-transparent border-arcane-800 text-parchment-200/60 hover:border-gold-600 hover:text-gold-400'
+            : isUnavailable
+              ? 'bg-transparent border-arcane-800/30 text-parchment-200/20 cursor-not-allowed'
+              : isAtLimit
+                ? 'bg-transparent border-arcane-800/40 text-parchment-200/20 cursor-not-allowed'
+                : 'bg-transparent border-arcane-800 text-parchment-200/60 hover:border-gold-600 hover:text-gold-400'
         )}
       >
-        {isPrepared ? '✓ Prepared' : isAtLimit ? '— at limit' : '+ Add'}
+        {isPrepared ? '✓ Prepared' : isUnavailable ? '🔒 Too high level' : isAtLimit ? '— at limit' : '+ Add'}
       </button>
     </div>
   )

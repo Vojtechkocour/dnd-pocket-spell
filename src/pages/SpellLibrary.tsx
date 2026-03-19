@@ -5,7 +5,7 @@ import { SpellCard } from '../components/spells/SpellCard'
 import { SpellFilters } from '../components/spells/SpellFilters'
 import { SearchInput } from '../components/ui/SearchInput'
 import { useState } from 'react'
-import { getMaxCantrips, getMaxPreparedLeveledSpells } from '../utils/preparedSpellLimit'
+import { getMaxCantrips, getMaxPreparedLeveledSpells, getMaxSpellLevel } from '../utils/preparedSpellLimit'
 
 export function SpellLibrary() {
   const navigate = useNavigate()
@@ -20,6 +20,7 @@ export function SpellLibrary() {
 
   const maxCantrips = character ? getMaxCantrips(character) : null
   const maxLeveled = character ? getMaxPreparedLeveledSpells(character) : null
+  const maxSpellLevel = character ? getMaxSpellLevel(character) : 9
 
   const preparedCantrips = character
     ? character.preparedSpellIds.filter((id) => spells.find((s) => s.id === id)?.level === 0).length
@@ -127,6 +128,12 @@ export function SpellLibrary() {
                           key={spell.id}
                           spell={spell}
                           isPrepared={character?.preparedSpellIds.includes(spell.id) ?? false}
+                          isUnavailable={
+                            character != null &&
+                            spell.level > 0 &&
+                            !character.preparedSpellIds.includes(spell.id) &&
+                            spell.level > maxSpellLevel
+                          }
                           isAtLimit={
                             character && !character.preparedSpellIds.includes(spell.id)
                               ? spell.level === 0
