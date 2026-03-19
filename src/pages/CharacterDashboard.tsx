@@ -96,7 +96,7 @@ export function CharacterDashboard() {
               </button>
             </div>
           ) : (
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
               {(() => {
                 const groups = new Map<number, typeof preparedSpells>()
                 for (const spell of preparedSpells) {
@@ -106,18 +106,30 @@ export function CharacterDashboard() {
                 return Array.from(groups.entries())
                   .sort(([a], [b]) => a - b)
                   .map(([level, group]) => (
-                    <div key={level}>
-                      <p className="text-xs text-parchment-200/40 uppercase tracking-wide mb-1">
-                        {level === 0 ? 'Cantrips' : `Level ${level}`}
-                      </p>
-                      {group.map((spell) => (
-                        <SpellListItem
-                          key={spell.id}
-                          spell={spell}
-                          character={character}
-                          onRemove={() => removePreparedSpell(character.id, spell.id)}
-                        />
-                      ))}
+                    <div key={level} className="rounded-lg overflow-hidden border border-arcane-800">
+                      <div className={`px-3 py-1.5 flex items-center gap-2 ${level === 0 ? 'bg-arcane-700' : 'bg-arcane-800'}`}>
+                        {level === 0 ? (
+                          <>
+                            <span className="font-display text-gold-400 text-xs uppercase tracking-widest">Cantrips</span>
+                            <span className="text-xs text-parchment-200/40 ml-auto">{group.length}</span>
+                          </>
+                        ) : (
+                          <>
+                            <span className="font-display text-gold-400 text-xs uppercase tracking-widest">Level {level}</span>
+                            <span className="text-xs text-parchment-200/40 ml-auto">{group.length}</span>
+                          </>
+                        )}
+                      </div>
+                      <div className="px-3">
+                        {group.map((spell) => (
+                          <SpellListItem
+                            key={spell.id}
+                            spell={spell}
+                            character={character}
+                            onRemove={() => removePreparedSpell(character.id, spell.id)}
+                          />
+                        ))}
+                      </div>
                     </div>
                   ))
               })()}
