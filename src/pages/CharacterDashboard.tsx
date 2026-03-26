@@ -18,9 +18,9 @@ export function CharacterDashboard() {
 
   if (!character) {
     return (
-      <div className="min-h-screen bg-arcane-950 flex items-center justify-center">
+      <div className="min-h-screen bg-parchment-100 flex items-center justify-center">
         <div className="text-center">
-          <p className="text-parchment-200 mb-4">No active character.</p>
+          <p className="text-ink-muted mb-4">No active character.</p>
           <Button onClick={() => navigate('/')}>← Back to Selection</Button>
         </div>
       </div>
@@ -37,23 +37,23 @@ export function CharacterDashboard() {
   void leveledSpells
 
   return (
-    <div className="min-h-screen bg-arcane-950 text-parchment-100">
-      <header className="bg-arcane-900 border-b border-arcane-800 px-4 py-3 flex items-center justify-between">
+    <div className="min-h-screen bg-parchment-100 text-ink">
+      <header className="bg-parchment-50 border-b border-parchment-300 px-4 py-3 flex items-center justify-between">
         <button
           onClick={() => navigate('/')}
-          className="text-parchment-200/60 hover:text-parchment-100 transition-colors text-sm flex items-center gap-1"
+          className="text-ink-muted hover:text-ink transition-colors text-sm flex items-center gap-1"
         >
           ← Characters
         </button>
         <div className="text-center">
-          <p className="font-display text-gold-400 font-semibold">{character.name}</p>
-          <p className="text-xs text-parchment-200/60">
+          <p className="font-display text-accent-gold font-semibold">{character.name}</p>
+          <p className="text-xs text-ink-muted">
             {CHARACTER_CLASS_LABELS[character.class]} • Lv {character.level}
           </p>
         </div>
         <button
           onClick={() => setShowEdit(true)}
-          className="text-parchment-200/50 hover:text-parchment-100 transition-colors text-sm w-16 text-right"
+          className="text-ink-muted hover:text-ink transition-colors text-sm w-16 text-right"
         >
           ✏️ Edit
         </button>
@@ -70,9 +70,9 @@ export function CharacterDashboard() {
         </div>
 
         {/* Right column — Prepared spells */}
-        <div className="bg-arcane-900 rounded-lg border border-arcane-800 p-4">
+        <div className="bg-parchment-50 rounded-xl border border-parchment-400 p-5 shadow-md">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="font-display text-gold-400 text-sm uppercase tracking-widest">
+            <h2 className="font-display text-accent-gold text-sm uppercase tracking-widest">
               Prepared Spells
             </h2>
             <Button
@@ -85,12 +85,12 @@ export function CharacterDashboard() {
           </div>
 
           {preparedSpells.length === 0 ? (
-            <div className="text-center py-8 text-parchment-200/40">
+            <div className="text-center py-8 text-ink-muted/60">
               <div className="text-3xl mb-2">📖</div>
               <p className="text-sm">No spells prepared.</p>
               <button
                 onClick={() => navigate('/library')}
-                className="text-gold-500 hover:text-gold-400 text-sm mt-2 underline"
+                className="text-accent-gold hover:text-accent-gold/80 text-sm mt-2 underline"
               >
                 Open Library
               </button>
@@ -106,17 +106,17 @@ export function CharacterDashboard() {
                 return Array.from(groups.entries())
                   .sort(([a], [b]) => a - b)
                   .map(([level, group]) => (
-                    <div key={level} className="rounded-lg overflow-hidden border border-arcane-800">
-                      <div className={`px-3 py-1.5 flex items-center gap-2 ${level === 0 ? 'bg-arcane-700' : 'bg-arcane-800'}`}>
+                    <div key={level} className="rounded-xl overflow-hidden border border-parchment-400 shadow-md">
+                      <div className={`px-3 py-2 flex items-center gap-2 ${level === 0 ? 'bg-parchment-200/80' : 'bg-parchment-300/70'} border-b border-parchment-300`}>
                         {level === 0 ? (
                           <>
-                            <span className="font-display text-gold-400 text-xs uppercase tracking-widest">Cantrips</span>
-                            <span className="text-xs text-parchment-200/40 ml-auto">{group.length}</span>
+                            <span className="font-display text-accent-gold text-xs uppercase tracking-widest">Cantrips</span>
+                            <span className="text-xs text-ink-muted ml-auto">{group.length}</span>
                           </>
                         ) : (
                           <>
-                            <span className="font-display text-gold-400 text-xs uppercase tracking-widest">Level {level}</span>
-                            <span className="text-xs text-parchment-200/40 ml-auto">{group.length}</span>
+                            <span className="font-display text-accent-gold text-xs uppercase tracking-widest">Level {level}</span>
+                            <span className="text-xs text-ink-muted ml-auto">{group.length}</span>
                           </>
                         )}
                       </div>

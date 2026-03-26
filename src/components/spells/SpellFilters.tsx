@@ -24,15 +24,15 @@ export function SpellFilters({ filters, onChange, onReset }: SpellFiltersProps) 
     (filters.ritual !== null ? 1 : 0)
 
   return (
-    <div className="bg-arcane-900 border border-arcane-800 rounded-lg p-4 space-y-4">
+    <div className="bg-parchment-50 border border-parchment-400 rounded-xl p-4 space-y-4 shadow-md">
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-semibold text-parchment-200 uppercase tracking-wide">
-          Filters {activeCount > 0 && <span className="text-gold-400">({activeCount})</span>}
+        <h3 className="text-sm font-semibold text-ink-light uppercase tracking-wide">
+          Filters {activeCount > 0 && <span className="text-accent-gold">({activeCount})</span>}
         </h3>
         {activeCount > 0 && (
           <button
             onClick={onReset}
-            className="text-xs text-parchment-200/50 hover:text-parchment-100 transition-colors"
+            className="text-xs text-ink-muted hover:text-ink transition-colors"
           >
             Reset
           </button>
@@ -41,7 +41,7 @@ export function SpellFilters({ filters, onChange, onReset }: SpellFiltersProps) 
 
       {/* Level */}
       <div>
-        <p className="text-xs text-parchment-200/60 mb-2">Level</p>
+        <p className="text-xs text-ink-muted mb-2">Level</p>
         <div className="flex flex-wrap gap-1">
           {LEVELS.map((lvl) => (
             <button
@@ -49,8 +49,8 @@ export function SpellFilters({ filters, onChange, onReset }: SpellFiltersProps) 
               onClick={() => onChange({ levels: toggleItem(filters.levels, lvl) })}
               className={`w-8 h-8 rounded text-xs transition-colors ${
                 filters.levels.includes(lvl)
-                  ? 'bg-gold-500 text-arcane-950 font-bold'
-                  : 'bg-arcane-800 text-parchment-200/60 hover:bg-arcane-700'
+                  ? 'bg-accent-gold text-parchment-50 font-bold'
+                  : 'bg-parchment-200 text-ink-muted hover:bg-parchment-300'
               }`}
             >
               {lvl === 0 ? 'C' : lvl}
@@ -61,7 +61,7 @@ export function SpellFilters({ filters, onChange, onReset }: SpellFiltersProps) 
 
       {/* School */}
       <div>
-        <p className="text-xs text-parchment-200/60 mb-2">School</p>
+        <p className="text-xs text-ink-muted mb-2">School</p>
         <div className="flex flex-wrap gap-1">
           {SCHOOLS.map((school) => (
             <button
@@ -69,8 +69,8 @@ export function SpellFilters({ filters, onChange, onReset }: SpellFiltersProps) 
               onClick={() => onChange({ schools: toggleItem(filters.schools, school) })}
               className={`px-2 py-1 rounded text-xs transition-colors ${
                 filters.schools.includes(school)
-                  ? 'bg-gold-500 text-arcane-950 font-bold'
-                  : 'bg-arcane-800 text-parchment-200/60 hover:bg-arcane-700'
+                  ? 'bg-accent-gold text-parchment-50 font-bold'
+                  : 'bg-parchment-200 text-ink-muted hover:bg-parchment-300'
               }`}
             >
               {SPELL_SCHOOL_LABELS[school]}
@@ -81,7 +81,7 @@ export function SpellFilters({ filters, onChange, onReset }: SpellFiltersProps) 
 
       {/* Class */}
       <div>
-        <p className="text-xs text-parchment-200/60 mb-2">Class</p>
+        <p className="text-xs text-ink-muted mb-2">Class</p>
         <div className="flex flex-wrap gap-1">
           {CLASSES.map((cls) => (
             <button
@@ -89,8 +89,8 @@ export function SpellFilters({ filters, onChange, onReset }: SpellFiltersProps) 
               onClick={() => onChange({ classes: toggleItem(filters.classes, cls) })}
               className={`px-2 py-1 rounded text-xs transition-colors capitalize ${
                 filters.classes.includes(cls)
-                  ? 'bg-gold-500 text-arcane-950 font-bold'
-                  : 'bg-arcane-800 text-parchment-200/60 hover:bg-arcane-700'
+                  ? 'bg-accent-gold text-parchment-50 font-bold'
+                  : 'bg-parchment-200 text-ink-muted hover:bg-parchment-300'
               }`}
             >
               {CHARACTER_CLASS_LABELS[cls as keyof typeof CHARACTER_CLASS_LABELS]}
@@ -108,7 +108,7 @@ export function SpellFilters({ filters, onChange, onReset }: SpellFiltersProps) 
           className={`flex-1 py-1.5 rounded text-xs transition-colors ${
             filters.concentration === true
               ? 'bg-yellow-600 text-white'
-              : 'bg-arcane-800 text-parchment-200/60 hover:bg-arcane-700'
+              : 'bg-parchment-200 text-ink-muted hover:bg-parchment-300'
           }`}
         >
           ⚡ Concentration
@@ -120,7 +120,7 @@ export function SpellFilters({ filters, onChange, onReset }: SpellFiltersProps) 
           className={`flex-1 py-1.5 rounded text-xs transition-colors ${
             filters.ritual === true
               ? 'bg-purple-600 text-white'
-              : 'bg-arcane-800 text-parchment-200/60 hover:bg-arcane-700'
+              : 'bg-parchment-200 text-ink-muted hover:bg-parchment-300'
           }`}
         >
           📜 Ritual

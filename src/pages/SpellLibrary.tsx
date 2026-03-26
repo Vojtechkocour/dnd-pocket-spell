@@ -48,11 +48,11 @@ export function SpellLibrary() {
   }
 
   return (
-    <div className="min-h-screen bg-arcane-950 text-parchment-100">
-      <header className="bg-arcane-900 border-b border-arcane-800 px-4 py-3 flex items-center gap-3 sticky top-0 z-30">
+    <div className="min-h-screen bg-parchment-100 text-ink">
+      <header className="bg-parchment-50 border-b border-parchment-300 px-4 py-3 flex items-center gap-3 sticky top-0 z-30">
         <button
           onClick={() => navigate(character ? '/dashboard' : '/')}
-          className="text-parchment-200/60 hover:text-parchment-100 transition-colors text-sm shrink-0"
+          className="text-ink-muted hover:text-ink transition-colors text-sm shrink-0"
         >
           ← Back
         </button>
@@ -65,7 +65,7 @@ export function SpellLibrary() {
         />
         <button
           onClick={() => setShowFilters(!showFilters)}
-          className="text-parchment-200/60 hover:text-parchment-100 transition-colors text-sm shrink-0"
+          className="text-ink-muted hover:text-ink transition-colors text-sm shrink-0"
         >
           🔧 Filters
         </button>
@@ -79,29 +79,29 @@ export function SpellLibrary() {
         )}
 
         {!character && (
-          <div className="mb-4 p-3 bg-arcane-900 border border-gold-600/30 rounded text-sm text-parchment-200/60">
+          <div className="mb-4 p-3 bg-parchment-50 border border-accent-gold/30 rounded text-sm text-ink-muted">
             Select a character to manage prepared spells.
           </div>
         )}
 
         <div className="flex flex-wrap items-center gap-3 mb-4">
-          <p className="text-xs text-parchment-200/40">
+          <p className="text-xs text-ink-muted">
             {filtered.length} of {spells.length} spells
           </p>
           {character && maxCantrips !== null && (
-            <span className={`text-xs px-2 py-0.5 rounded border ${preparedCantrips >= maxCantrips ? 'border-crimson-600/60 text-crimson-400 bg-crimson-900/20' : 'border-arcane-700 text-parchment-200/50'}`}>
+            <span className={`text-xs px-2 py-0.5 rounded border ${preparedCantrips >= maxCantrips ? 'border-accent-red/60 text-accent-red bg-red-50' : 'border-parchment-300 text-ink-muted'}`}>
               Cantrips: {preparedCantrips} / {maxCantrips}
             </span>
           )}
           {character && maxLeveled !== null && (
-            <span className={`text-xs px-2 py-0.5 rounded border ${preparedLeveled >= maxLeveled ? 'border-crimson-600/60 text-crimson-400 bg-crimson-900/20' : 'border-arcane-700 text-parchment-200/50'}`}>
+            <span className={`text-xs px-2 py-0.5 rounded border ${preparedLeveled >= maxLeveled ? 'border-accent-red/60 text-accent-red bg-red-50' : 'border-parchment-300 text-ink-muted'}`}>
               Kouzla: {preparedLeveled} / {maxLeveled}
             </span>
           )}
         </div>
 
         {filtered.length === 0 ? (
-          <div className="text-center py-16 text-parchment-200/40">
+          <div className="text-center py-16 text-ink-muted">
             <div className="text-4xl mb-3">🔍</div>
             <p>No spells found.</p>
           </div>
@@ -119,7 +119,7 @@ export function SpellLibrary() {
               <div className="flex flex-col gap-8">
                 {sortedLevels.map((level) => (
                   <section key={level}>
-                    <h2 className="font-display text-gold-400 text-sm uppercase tracking-widest mb-3 border-b border-arcane-800 pb-1">
+                    <h2 className="font-display text-accent-gold text-sm uppercase tracking-widest mb-3 border-b border-parchment-300 pb-1">
                       {level === 0 ? 'Cantrips' : `Level ${level}`}
                     </h2>
                     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

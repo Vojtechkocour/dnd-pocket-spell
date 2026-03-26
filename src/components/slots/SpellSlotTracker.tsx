@@ -20,20 +20,20 @@ export function SpellSlotTracker({ character }: SpellSlotTrackerProps) {
   const hasAnySlots = slots.some((s) => s.total > 0) || (warlockMode && character.pactSlots)
 
   return (
-    <div className="bg-arcane-900 rounded-lg border border-arcane-800 p-4 space-y-4">
-      <h2 className="font-display text-gold-400 text-sm uppercase tracking-widest">
+    <div className="bg-parchment-50 rounded-xl border border-parchment-400 p-5 space-y-4 shadow-md">
+      <h2 className="font-display text-accent-gold text-sm uppercase tracking-widest">
         Spell Slots
       </h2>
 
       {!hasAnySlots && (
-        <p className="text-parchment-200/50 text-sm">No slots available.</p>
+        <p className="text-ink-muted text-sm">No slots available.</p>
       )}
 
       {warlockMode && character.pactSlots && (
         <div className="space-y-1">
-          <p className="text-xs text-parchment-200/50 mb-2">Pact Magic (Lv {character.pactSlots.level})</p>
+          <p className="text-xs text-ink-muted mb-2">Pact Magic (Lv {character.pactSlots.level})</p>
           <div className="flex items-center gap-3">
-            <span className="text-xs text-parchment-200/60 w-10 shrink-0">
+            <span className="text-xs text-ink-muted w-10 shrink-0">
               Pact
             </span>
             <div className="flex items-center gap-1.5 flex-1">
@@ -51,7 +51,7 @@ export function SpellSlotTracker({ character }: SpellSlotTrackerProps) {
                 )
               })}
             </div>
-            <span className="text-xs text-parchment-200/40 w-8 text-right shrink-0">
+            <span className="text-xs text-ink-muted/60 w-8 text-right shrink-0">
               {character.pactSlots.total - character.pactSlots.used}/{character.pactSlots.total}
             </span>
           </div>
@@ -66,7 +66,7 @@ export function SpellSlotTracker({ character }: SpellSlotTrackerProps) {
         </div>
       )}
 
-      <div className="flex gap-2 pt-2 border-t border-arcane-800">
+      <div className="flex gap-2 pt-2 border-t border-parchment-300">
         <Button
           variant="secondary"
           size="sm"

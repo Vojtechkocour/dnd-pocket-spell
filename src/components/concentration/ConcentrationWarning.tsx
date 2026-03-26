@@ -23,14 +23,14 @@ export function ConcentrationWarning({ characterId }: ConcentrationWarningProps)
   return (
     <Modal open={true} onClose={dismiss} title="Break Concentration">
       <div className="space-y-4">
-        <p className="text-parchment-200">
+        <p className="text-ink-light">
           You are concentrating on{' '}
-          <span className="text-yellow-400 font-semibold">{currentSpell?.name ?? 'a spell'}</span>
+          <span className="text-yellow-700 font-semibold">{currentSpell?.name ?? 'a spell'}</span>
           . Casting{' '}
-          <span className="text-gold-400 font-semibold">{newSpell?.name ?? 'a new spell'}</span>{' '}
+          <span className="text-accent-gold font-semibold">{newSpell?.name ?? 'a new spell'}</span>{' '}
           will break concentration.
         </p>
-        <p className="text-parchment-200/60 text-sm">Switch concentration?</p>
+        <p className="text-ink-muted text-sm">Switch concentration?</p>
         <div className="flex gap-3">
           <Button
             variant="danger"

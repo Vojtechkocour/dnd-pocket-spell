@@ -47,37 +47,37 @@ export function CharacterCard({ character }: CharacterCardProps) {
   }
 
   return (
-    <div className="bg-arcane-900 border border-arcane-800 rounded-lg p-5 flex flex-col gap-4 hover:border-gold-600 transition-colors">
+    <div className="bg-parchment-50 border border-parchment-400 rounded-xl p-5 flex flex-col gap-4 shadow-md hover:shadow-lg hover:border-accent-gold transition-all duration-200">
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-3">
           <span className="text-3xl" role="img" aria-label={CHARACTER_CLASS_LABELS[character.class]}>
             {CLASS_ICONS[character.class] ?? '🧙'}
           </span>
           <div>
-            <h3 className="font-display text-lg text-parchment-100 leading-tight">
+            <h3 className="font-display text-lg text-ink leading-tight">
               {character.name}
             </h3>
-            <p className="text-sm text-parchment-200/70">
+            <p className="text-sm text-ink-muted">
               {CHARACTER_CLASS_LABELS[character.class]} • Level {character.level}
             </p>
           </div>
         </div>
         <button
           onClick={handleDelete}
-          className="text-parchment-200/30 hover:text-crimson-500 transition-colors text-lg"
+          className="text-ink-muted/40 hover:text-accent-red transition-colors text-lg"
           aria-label="Delete character"
         >
           🗑️
         </button>
       </div>
 
-      <div className="text-xs text-parchment-200/60 flex gap-4">
+      <div className="text-xs text-ink-muted flex gap-4">
         <span>🔮 {character.preparedSpellIds.length} spells</span>
         <span>
           ✨ {totalSlots - usedSlots}/{totalSlots} slots
         </span>
         {character.concentratingOnSpellId && (
-          <span className="text-yellow-400">⚡ Concentrating</span>
+          <span className="text-yellow-700">⚡ Concentrating</span>
         )}
       </div>
 

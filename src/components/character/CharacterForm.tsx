@@ -53,24 +53,24 @@ export function CharacterForm({ open, onClose }: CharacterFormProps) {
     <Modal open={open} onClose={onClose} title="New Character">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm text-parchment-200 mb-1">Name</label>
+          <label className="block text-sm text-ink-light mb-1">Name</label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Gandalf, Merlin..."
-            className="w-full bg-arcane-800 border border-arcane-800 rounded px-3 py-2 text-parchment-100 placeholder:text-parchment-200/40 focus:outline-none focus:border-gold-500"
+            className="w-full bg-parchment-100 border border-parchment-300 rounded px-3 py-2 text-ink placeholder:text-ink-muted/50 focus:outline-none focus:border-accent-gold"
             autoFocus
           />
-          {error && <p className="text-crimson-500 text-sm mt-1">{error}</p>}
+          {error && <p className="text-accent-red text-sm mt-1">{error}</p>}
         </div>
 
         <div>
-          <label className="block text-sm text-parchment-200 mb-1">Class</label>
+          <label className="block text-sm text-ink-light mb-1">Class</label>
           <select
             value={cls}
             onChange={(e) => setCls(e.target.value as CharacterClass)}
-            className="w-full bg-arcane-800 border border-arcane-800 rounded px-3 py-2 text-parchment-100 focus:outline-none focus:border-gold-500"
+            className="w-full bg-parchment-100 border border-parchment-300 rounded px-3 py-2 text-ink focus:outline-none focus:border-accent-gold"
           >
             {CLASS_OPTIONS.map(([value, label]) => (
               <option key={value} value={value}>
@@ -82,9 +82,9 @@ export function CharacterForm({ open, onClose }: CharacterFormProps) {
 
         {isPreparedClass(cls) && (
           <div>
-            <label className="block text-sm text-parchment-200 mb-1">
+            <label className="block text-sm text-ink-light mb-1">
               {PREPARED_CLASS_ABILITY[cls]} modifier:{' '}
-              <span className="text-gold-400 font-bold">{spellcastingModifier >= 0 ? `+${spellcastingModifier}` : spellcastingModifier}</span>
+              <span className="text-accent-gold font-bold">{spellcastingModifier >= 0 ? `+${spellcastingModifier}` : spellcastingModifier}</span>
             </label>
             <input
               type="range"
@@ -92,22 +92,22 @@ export function CharacterForm({ open, onClose }: CharacterFormProps) {
               max={10}
               value={spellcastingModifier}
               onChange={(e) => setSpellcastingModifier(Number(e.target.value))}
-              className="w-full accent-gold-500"
+              className="w-full accent-accent-gold"
             />
-            <div className="flex justify-between text-xs text-parchment-200/50">
+            <div className="flex justify-between text-xs text-ink-muted">
               <span>−1</span>
               <span>+5</span>
               <span>+10</span>
             </div>
-            <p className="text-xs text-parchment-200/40 mt-1">
+            <p className="text-xs text-ink-muted/70 mt-1">
               Ovlivňuje počet připravených kouzel
             </p>
           </div>
         )}
 
         <div>
-          <label className="block text-sm text-parchment-200 mb-1">
-            Level: <span className="text-gold-400 font-bold">{level}</span>
+          <label className="block text-sm text-ink-light mb-1">
+            Level: <span className="text-accent-gold font-bold">{level}</span>
           </label>
           <input
             type="range"
@@ -115,9 +115,9 @@ export function CharacterForm({ open, onClose }: CharacterFormProps) {
             max={20}
             value={level}
             onChange={(e) => setLevel(Number(e.target.value))}
-            className="w-full accent-gold-500"
+            className="w-full accent-accent-gold"
           />
-          <div className="flex justify-between text-xs text-parchment-200/50">
+          <div className="flex justify-between text-xs text-ink-muted">
             <span>1</span>
             <span>10</span>
             <span>20</span>

@@ -40,9 +40,9 @@ export function SpellDetail() {
 
   if (!spell) {
     return (
-      <div className="min-h-screen bg-arcane-950 flex items-center justify-center">
+      <div className="min-h-screen bg-parchment-100 flex items-center justify-center">
         <div className="text-center">
-          <p className="text-parchment-200 mb-4">Spell not found.</p>
+          <p className="text-ink-muted mb-4">Spell not found.</p>
           <Button onClick={() => navigate(-1)}>← Back</Button>
         </div>
       </div>
@@ -59,15 +59,15 @@ export function SpellDetail() {
     .join(', ')
 
   return (
-    <div className="min-h-screen bg-arcane-950 text-parchment-100">
-      <header className="bg-arcane-900 border-b border-arcane-800 px-4 py-3 flex items-center gap-3 sticky top-0 z-30">
+    <div className="min-h-screen bg-parchment-100 text-ink">
+      <header className="bg-parchment-50 border-b border-parchment-300 px-4 py-3 flex items-center gap-3 sticky top-0 z-30">
         <button
           onClick={() => navigate(-1)}
-          className="text-parchment-200/60 hover:text-parchment-100 transition-colors text-sm"
+          className="text-ink-muted hover:text-ink transition-colors text-sm"
         >
           ←
         </button>
-        <h1 className="font-display text-gold-400 text-lg flex-1 truncate">{spell.name}</h1>
+        <h1 className="font-display text-accent-gold text-lg flex-1 truncate">{spell.name}</h1>
         {character && (
           <Button
             size="sm"
@@ -88,12 +88,12 @@ export function SpellDetail() {
             label={SPELL_SCHOOL_LABELS[spell.school]}
             className={SPELL_SCHOOL_COLORS[spell.school]}
           />
-          <Badge label={levelLabel} className="bg-arcane-800 text-parchment-200" />
+          <Badge label={levelLabel} className="bg-parchment-200 text-ink-light border border-parchment-300" />
           {spell.concentration && (
-            <Badge label="Concentration" className="bg-yellow-900/60 text-yellow-400" />
+            <Badge label="Concentration" className="bg-yellow-100 text-yellow-800 border border-yellow-300" />
           )}
           {spell.ritual && (
-            <Badge label="Ritual" className="bg-purple-900/60 text-purple-400" />
+            <Badge label="Ritual" className="bg-purple-100 text-purple-800 border border-purple-300" />
           )}
         </div>
 
@@ -111,52 +111,52 @@ export function SpellDetail() {
               ? [{ label: 'Damage Type', value: spell.damageType }]
               : []),
           ].map(({ label, value }) => (
-            <div key={label} className="bg-arcane-900 rounded p-3">
-              <p className="text-xs text-parchment-200/50 mb-1">{label}</p>
-              <p className="text-parchment-100">{value}</p>
+            <div key={label} className="bg-parchment-50 border border-parchment-400 rounded-xl p-3 shadow-md">
+              <p className="text-xs text-ink-muted mb-1">{label}</p>
+              <p className="text-ink">{value}</p>
             </div>
           ))}
         </div>
 
         {/* Material component detail */}
         {spell.components.material && spell.components.materialDescription && (
-          <div className="text-sm text-parchment-200/60">
-            <span className="font-medium text-parchment-200">Material Components: </span>
+          <div className="text-sm text-ink-muted">
+            <span className="font-medium text-ink-light">Material Components: </span>
             {spell.components.materialDescription}
           </div>
         )}
 
         {/* Description */}
-        <div className="bg-arcane-900 rounded-lg p-5 space-y-4">
-          <h2 className="font-display text-gold-400 text-sm uppercase tracking-wide">Description</h2>
-          <p className="text-parchment-200 leading-relaxed whitespace-pre-line">
+        <div className="bg-parchment-50 border border-parchment-400 rounded-xl p-5 space-y-4 shadow-md">
+          <h2 className="font-display text-accent-gold text-sm uppercase tracking-wide">Description</h2>
+          <p className="text-ink-light leading-relaxed whitespace-pre-line">
             {spell.description}
           </p>
           {spell.higherLevels && (
-            <div className="border-t border-arcane-800 pt-4">
-              <p className="text-xs text-parchment-200/50 uppercase tracking-wide mb-1">
+            <div className="border-t border-parchment-300 pt-4">
+              <p className="text-xs text-ink-muted uppercase tracking-wide mb-1">
                 At Higher Levels
               </p>
-              <p className="text-parchment-200 leading-relaxed">{spell.higherLevels}</p>
+              <p className="text-ink-light leading-relaxed">{spell.higherLevels}</p>
             </div>
           )}
         </div>
 
         {/* Classes */}
         <div>
-          <p className="text-xs text-parchment-200/50 uppercase tracking-wide mb-2">Classes</p>
+          <p className="text-xs text-ink-muted uppercase tracking-wide mb-2">Classes</p>
           <div className="flex flex-wrap gap-2">
             {spell.classes.map((cls) => (
               <Badge
                 key={cls}
                 label={CHARACTER_CLASS_LABELS[cls as CharacterClass] ?? cls}
-                className="bg-arcane-800 text-parchment-200"
+                className="bg-parchment-200 text-ink-light border border-parchment-300"
               />
             ))}
           </div>
         </div>
 
-        <p className="text-xs text-parchment-200/30">Source: {spell.source}</p>
+        <p className="text-xs text-ink-muted/50">Source: {spell.source}</p>
       </main>
     </div>
   )

@@ -28,19 +28,19 @@ export function Modal({ open, onClose, title, children, className }: ModalProps)
       aria-modal="true"
     >
       <div
-        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+        className="absolute inset-0 bg-ink/40 backdrop-blur-sm"
         onClick={onClose}
         aria-hidden="true"
       />
       <div
         className={cn(
-          'relative z-10 w-full max-w-md rounded-lg bg-arcane-900 border border-gold-600',
+          'relative z-10 w-full max-w-md rounded-xl bg-parchment-50 border-2 border-parchment-400',
           'shadow-2xl p-6',
           className
         )}
       >
         {title && (
-          <h2 className="font-display text-xl text-gold-400 mb-4">{title}</h2>
+          <h2 className="font-display text-xl text-accent-gold mb-4">{title}</h2>
         )}
         {children}
       </div>

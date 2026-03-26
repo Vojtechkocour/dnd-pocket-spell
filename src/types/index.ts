@@ -99,14 +99,14 @@ export const SPELL_SCHOOL_LABELS: Record<SpellSchool, string> = {
 }
 
 export const SPELL_SCHOOL_COLORS: Record<SpellSchool, string> = {
-  abjuration: 'bg-blue-800 text-blue-200',
-  conjuration: 'bg-violet-800 text-violet-200',
-  divination: 'bg-sky-800 text-sky-200',
-  enchantment: 'bg-pink-800 text-pink-200',
-  evocation: 'bg-orange-800 text-orange-200',
-  illusion: 'bg-purple-800 text-purple-200',
-  necromancy: 'bg-green-900 text-green-300',
-  transmutation: 'bg-yellow-800 text-yellow-200',
+  abjuration: 'bg-blue-100 text-blue-800 border border-blue-300',
+  conjuration: 'bg-violet-100 text-violet-800 border border-violet-300',
+  divination: 'bg-sky-100 text-sky-800 border border-sky-300',
+  enchantment: 'bg-pink-100 text-pink-800 border border-pink-300',
+  evocation: 'bg-orange-100 text-orange-800 border border-orange-300',
+  illusion: 'bg-purple-100 text-purple-800 border border-purple-300',
+  necromancy: 'bg-green-100 text-green-800 border border-green-300',
+  transmutation: 'bg-yellow-100 text-yellow-800 border border-yellow-300',
 }
 
 export interface Character {

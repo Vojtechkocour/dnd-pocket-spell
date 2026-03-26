@@ -15,11 +15,11 @@ export function SlotPip({ filled, onClick, disabled }: SlotPipProps) {
       aria-label={filled ? 'Použitý slot — klikni pro obnovu' : 'Volný slot — klikni pro použití'}
       className={cn(
         'w-6 h-6 rounded-full border-2 transition-all duration-150',
-        'focus-visible:ring-2 focus-visible:ring-gold-500 focus-visible:outline-none',
+        'focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:outline-none',
         'disabled:cursor-not-allowed',
         filled
-          ? 'bg-transparent border-gold-600'
-          : 'bg-gold-500 border-gold-400 shadow-glow',
+          ? 'bg-transparent border-parchment-400'
+          : 'bg-accent-gold border-accent-gold/80 shadow-sm',
         !disabled && 'hover:scale-110 cursor-pointer'
       )}
     />

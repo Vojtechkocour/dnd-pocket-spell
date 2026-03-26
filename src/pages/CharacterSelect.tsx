@@ -9,9 +9,9 @@ export function CharacterSelect() {
   const [showForm, setShowForm] = useState(false)
 
   return (
-    <div className="min-h-screen bg-arcane-950 text-parchment-100">
-      <header className="bg-arcane-900 border-b border-arcane-800 px-6 py-4 flex items-center justify-between">
-        <h1 className="font-display text-2xl text-gold-400">D&D Pocket Spell</h1>
+    <div className="min-h-screen bg-parchment-100 text-ink">
+      <header className="bg-parchment-50 border-b border-parchment-300 px-6 py-4 flex items-center justify-between">
+        <h1 className="font-display text-2xl text-accent-gold">D&D Pocket Spell</h1>
         <Button onClick={() => setShowForm(true)} size="sm">
           + New Character
         </Button>
@@ -21,10 +21,10 @@ export function CharacterSelect() {
         {characters.length === 0 ? (
           <div className="text-center py-20">
             <div className="text-6xl mb-4">🔮</div>
-            <h2 className="font-display text-2xl text-parchment-200 mb-2">
+            <h2 className="font-display text-2xl text-ink-light mb-2">
               No Characters
             </h2>
-            <p className="text-parchment-200/60 mb-8">
+            <p className="text-ink-muted mb-8">
               Create your first spellcasting character and start managing your spells.
             </p>
             <Button onClick={() => setShowForm(true)} size="lg">
@@ -33,7 +33,7 @@ export function CharacterSelect() {
           </div>
         ) : (
           <>
-            <h2 className="font-display text-xl text-parchment-200 mb-6">
+            <h2 className="font-display text-xl text-ink-light mb-6">
               Your Characters ({characters.length})
             </h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

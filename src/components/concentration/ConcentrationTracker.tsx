@@ -14,24 +14,24 @@ export function ConcentrationTracker({ characterId, spellId }: ConcentrationTrac
 
   if (!spell) {
     return (
-      <div className="bg-arcane-900 rounded-lg border border-arcane-800 p-4">
-        <h2 className="font-display text-gold-400 text-sm uppercase tracking-widest mb-2">
+      <div className="bg-parchment-50 rounded-xl border border-parchment-400 p-5 shadow-md">
+        <h2 className="font-display text-accent-gold text-sm uppercase tracking-widest mb-2">
           Concentration
         </h2>
-        <p className="text-parchment-200/40 text-sm">Not concentrating on any spell.</p>
+        <p className="text-ink-muted text-sm">Not concentrating on any spell.</p>
       </div>
     )
   }
 
   return (
-    <div className="bg-arcane-900 rounded-lg border border-yellow-600/60 p-4 shadow-glow-red">
-      <h2 className="font-display text-gold-400 text-sm uppercase tracking-widest mb-3">
+    <div className="bg-yellow-50/50 rounded-xl border border-yellow-500 p-5 shadow-md">
+      <h2 className="font-display text-accent-gold text-sm uppercase tracking-widest mb-3">
         ⚡ Concentration Active
       </h2>
       <div className="flex items-center justify-between gap-3">
         <div>
-          <p className="text-parchment-100 font-semibold">{spell.name}</p>
-          <p className="text-xs text-parchment-200/50">{spell.duration}</p>
+          <p className="text-ink font-semibold">{spell.name}</p>
+          <p className="text-xs text-ink-muted">{spell.duration}</p>
         </div>
         <Button
           variant="danger"

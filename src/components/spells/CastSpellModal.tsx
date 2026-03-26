@@ -18,26 +18,26 @@ export function CastSpellModal({ spell, character, open, onClose, onCast }: Cast
 
     return (
       <Modal open={open} onClose={onClose} title={`Seslat: ${spell.name}`}>
-        <p className="text-sm text-parchment-200/70 mb-4">
+        <p className="text-sm text-ink-muted mb-4">
           Warlock — Pact Magic slot (úroveň {pact.level})
         </p>
 
         {available ? (
           <button
             onClick={() => { onCast(pact.level); onClose() }}
-            className="w-full text-left px-4 py-3 rounded border border-gold-600/50 bg-gold-500/10 hover:bg-gold-500/20 text-gold-300 transition-colors"
+            className="w-full text-left px-4 py-3 rounded border border-accent-gold/50 bg-accent-gold/10 hover:bg-accent-gold/20 text-accent-gold transition-colors"
           >
             <div className="flex items-center justify-between">
               <span className="font-display">Pact Slot — úroveň {pact.level}</span>
-              <span className="text-xs text-parchment-200/60">
+              <span className="text-xs text-ink-muted">
                 {pact.total - pact.used} / {pact.total} dostupné
               </span>
             </div>
           </button>
         ) : (
-          <div className="p-4 bg-crimson-900/30 border border-crimson-700/50 rounded text-center">
-            <p className="text-crimson-400 font-display mb-1">Žádné Pact Sloty</p>
-            <p className="text-xs text-parchment-200/50">
+          <div className="p-4 bg-red-50 border border-accent-red/30 rounded text-center">
+            <p className="text-accent-red font-display mb-1">Žádné Pact Sloty</p>
+            <p className="text-xs text-ink-muted">
               Odpočiň si (Short Rest) pro obnovení slotů.
             </p>
           </div>
@@ -63,14 +63,14 @@ export function CastSpellModal({ spell, character, open, onClose, onCast }: Cast
 
   return (
     <Modal open={open} onClose={onClose} title={`Seslat: ${spell.name}`}>
-      <p className="text-sm text-parchment-200/70 mb-4">
+      <p className="text-sm text-ink-muted mb-4">
         Vyber spell slot (min. úroveň {spell.level}):
       </p>
 
       {slotOptions.length === 0 || !hasAnyAvailable ? (
-        <div className="p-4 bg-crimson-900/30 border border-crimson-700/50 rounded text-center">
-          <p className="text-crimson-400 font-display mb-1">Žádné dostupné sloty</p>
-          <p className="text-xs text-parchment-200/50">
+        <div className="p-4 bg-red-50 border border-accent-red/30 rounded text-center">
+          <p className="text-accent-red font-display mb-1">Žádné dostupné sloty</p>
+          <p className="text-xs text-ink-muted">
             Pro obnovení slotů potřebuješ Long Rest.
           </p>
         </div>
@@ -86,15 +86,15 @@ export function CastSpellModal({ spell, character, open, onClose, onCast }: Cast
                 onClick={() => { onCast(slot.level); onClose() }}
                 className={
                   exhausted
-                    ? 'w-full text-left px-4 py-3 rounded border border-arcane-700/40 bg-arcane-800/30 text-parchment-200/25 cursor-not-allowed'
-                    : 'w-full text-left px-4 py-3 rounded border border-gold-600/50 bg-gold-500/10 hover:bg-gold-500/20 text-gold-300 transition-colors'
+                    ? 'w-full text-left px-4 py-3 rounded border border-parchment-300/60 bg-parchment-200/50 text-ink-muted/30 cursor-not-allowed'
+                    : 'w-full text-left px-4 py-3 rounded border border-accent-gold/50 bg-accent-gold/10 hover:bg-accent-gold/20 text-accent-gold transition-colors'
                 }
               >
                 <div className="flex items-center justify-between">
                   <span className="font-display">
                     {slot.level === spell.level ? `Úroveň ${slot.level}` : `Úroveň ${slot.level} ↑`}
                   </span>
-                  <span className={`text-xs ${exhausted ? 'text-crimson-500' : 'text-parchment-200/60'}`}>
+                  <span className={`text-xs ${exhausted ? 'text-accent-red' : 'text-ink-muted'}`}>
                     {exhausted ? 'Vyčerpáno' : `${remaining} / ${slot.total} dostupné`}
                   </span>
                 </div>

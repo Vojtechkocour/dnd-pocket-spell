@@ -21,7 +21,7 @@ export function SlotLevelRow({ characterId, slot }: SlotLevelRowProps) {
 
   return (
     <div className="flex items-center gap-3">
-      <span className="text-xs text-parchment-200/60 w-10 shrink-0">
+      <span className="text-xs text-ink-muted w-10 shrink-0">
         Lv {slot.level}
       </span>
       <div className="flex items-center gap-1.5 flex-1">
@@ -39,7 +39,7 @@ export function SlotLevelRow({ characterId, slot }: SlotLevelRowProps) {
           />
         ))}
       </div>
-      <span className="text-xs text-parchment-200/40 w-8 text-right shrink-0">
+      <span className="text-xs text-ink-muted/60 w-8 text-right shrink-0">
         {slot.total - slot.used}/{slot.total}
       </span>
     </div>

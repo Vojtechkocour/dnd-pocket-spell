@@ -47,19 +47,19 @@ export function EditCharacterModal({ character, open, onClose }: EditCharacterMo
     <Modal open={open} onClose={onClose} title="Upravit postavu">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm text-parchment-200 mb-1">Jméno</label>
+          <label className="block text-sm text-ink-light mb-1">Jméno</label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full bg-arcane-800 border border-arcane-700 rounded px-3 py-2 text-parchment-100 placeholder:text-parchment-200/40 focus:outline-none focus:border-gold-500"
+            className="w-full bg-parchment-100 border border-parchment-300 rounded px-3 py-2 text-ink placeholder:text-ink-muted/50 focus:outline-none focus:border-accent-gold"
           />
-          {error && <p className="text-crimson-500 text-sm mt-1">{error}</p>}
+          {error && <p className="text-accent-red text-sm mt-1">{error}</p>}
         </div>
 
         <div>
-          <label className="block text-sm text-parchment-200 mb-1">
-            Level: <span className="text-gold-400 font-bold">{level}</span>
+          <label className="block text-sm text-ink-light mb-1">
+            Level: <span className="text-accent-gold font-bold">{level}</span>
           </label>
           <input
             type="range"
@@ -67,9 +67,9 @@ export function EditCharacterModal({ character, open, onClose }: EditCharacterMo
             max={20}
             value={level}
             onChange={(e) => setLevel(Number(e.target.value))}
-            className="w-full accent-gold-500"
+            className="w-full accent-accent-gold"
           />
-          <div className="flex justify-between text-xs text-parchment-200/50">
+          <div className="flex justify-between text-xs text-ink-muted">
             <span>1</span>
             <span>10</span>
             <span>20</span>
@@ -77,23 +77,23 @@ export function EditCharacterModal({ character, open, onClose }: EditCharacterMo
         </div>
 
         <div>
-          <label className="block text-sm text-parchment-200 mb-1">
-            Subclass <span className="text-parchment-200/40">(nepovinné)</span>
+          <label className="block text-sm text-ink-light mb-1">
+            Subclass <span className="text-ink-muted/60">(nepovinné)</span>
           </label>
           <input
             type="text"
             value={subclass}
             onChange={(e) => setSubclass(e.target.value)}
             placeholder="např. School of Evocation"
-            className="w-full bg-arcane-800 border border-arcane-700 rounded px-3 py-2 text-parchment-100 placeholder:text-parchment-200/30 focus:outline-none focus:border-gold-500"
+            className="w-full bg-parchment-100 border border-parchment-300 rounded px-3 py-2 text-ink placeholder:text-ink-muted/40 focus:outline-none focus:border-accent-gold"
           />
         </div>
 
         {isPreparedClass(character.class) && (
           <div>
-            <label className="block text-sm text-parchment-200 mb-1">
+            <label className="block text-sm text-ink-light mb-1">
               {PREPARED_CLASS_ABILITY[character.class]} modifier:{' '}
-              <span className="text-gold-400 font-bold">
+              <span className="text-accent-gold font-bold">
                 {modifier >= 0 ? `+${modifier}` : modifier}
               </span>
             </label>
@@ -103,9 +103,9 @@ export function EditCharacterModal({ character, open, onClose }: EditCharacterMo
               max={10}
               value={modifier}
               onChange={(e) => setModifier(Number(e.target.value))}
-              className="w-full accent-gold-500"
+              className="w-full accent-accent-gold"
             />
-            <div className="flex justify-between text-xs text-parchment-200/50">
+            <div className="flex justify-between text-xs text-ink-muted">
               <span>−1</span>
               <span>+5</span>
               <span>+10</span>

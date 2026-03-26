@@ -7,15 +7,30 @@
     box-sizing: border-box;
   }
 
+  :root {
+    --color-parchment: #f9f3e3;
+    --color-parchment-dark: #ecdbb0;
+    --color-ink: #1a1410;
+    --color-ink-muted: #6b5744;
+    --color-accent-gold: #8b6914;
+    --color-accent-red: #7a1e1e;
+  }
+
   html {
-    font-family: 'Crimson Text', Georgia, serif;
+    font-family: 'Lora', Georgia, serif;
     -webkit-font-smoothing: antialiased;
+    color: var(--color-ink);
+    background-color: var(--color-parchment);
   }
 
   body {
-    background-color: #070512;
-    color: #f9edd8;
+    background-color: var(--color-parchment);
+    color: var(--color-ink);
     min-height: 100dvh;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cinzel', Georgia, serif;
   }
 
   ::-webkit-scrollbar {
@@ -23,11 +38,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #0f0a1e;
+    background: #f5ecd0;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #b8860b;
+    background: #8b6914;
     border-radius: 3px;
   }
 
@@ -35,7 +50,7 @@
     -webkit-appearance: none;
     appearance: none;
     height: 4px;
-    background: #1a1030;
+    background: #ecdbb0;
     border-radius: 2px;
     outline: none;
   }
@@ -44,10 +59,24 @@
     -webkit-appearance: none;
     width: 18px;
     height: 18px;
-    background: #d4a017;
+    background: #8b6914;
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 0 6px rgba(212, 160, 23, 0.5);
+    box-shadow: 0 0 6px rgba(139, 105, 20, 0.4);
+  }
+}
+
+@layer components {
+  .paper-card {
+    @apply bg-parchment-50 border border-parchment-400 rounded-xl shadow-md;
+  }
+
+  .field-box {
+    @apply border border-ink/20 bg-parchment-100 rounded-sm px-2 py-1 font-body text-ink;
+  }
+
+  .section-header {
+    @apply font-display text-xs uppercase tracking-widest text-ink-muted border-b border-ink/20 pb-1 mb-2;
   }
 }
 
